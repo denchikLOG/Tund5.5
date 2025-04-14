@@ -1,5 +1,5 @@
-#5.5
-#1 kool
+# 5.5
+# #1 kool
 
 # def kool():
 #     opilased,puudumised=[],[]
@@ -39,11 +39,12 @@
 #             else:
 #                 print("Õpilast ei leitud.")
 #         elif valik=="0":
+#             print("Nägemist!")
 #             break
 #         else:
 #             print("Tundmatu valik.")
 # kool()
-#4 pood
+# #4 pood
 # def pood():
 #     покупки,hinnad,ostsid=[],[],[]
 #     n=int(input("Kui palju toode tahate lisada? "))
@@ -90,25 +91,23 @@
 #             else:
 #                 print(f"toode {toode} ei leidnud.")
 #         elif valik=="5":
+#             print("Nägemist!")
 #             break
 # pood()
 
-#7 tootajad
-def tootajad():
-    töötajad,sünniajad=[],[]
+#7 töötajad
+def töötajad():
+    töötajad=[]
+    sünniajad=[]
     n=int(input("Mitu töötajat küsitleda? "))
     for _ in range(n):
         nimi=input("Töötaja nimi: ")
         töötajad.append(nimi)
         sünniaasta=int(input(f"{nimi} sünniaasta: "))
-        sünniajad.append(sünniaasta)    
-    def get_age(sünniaasta):
-        return 2025-sünniaasta
-    def sort_by_age(item):
-        return get_age(item[1])
+        sünniajad.append(sünniaasta)
     while True:
         print("\n1 - Pensionärid\n2 - Keskmine vanus\n3 - 10 nooremat/vanemat\n4 - Otsi sünniaasta järgi\n0 - Välju")
-        valik=input("Valik: ")   
+        valik=input("Valik: ")
         if valik=="1":
             for nimi,sünniaasta in zip(töötajad,sünniajad):
                 if 2025-sünniaasta>=65:
@@ -117,8 +116,8 @@ def tootajad():
             avg_age=sum([2025-sünniaasta for sünniaasta in sünniajad])/len(sünniajad)
             print(f"Keskmine vanus: {avg_age:.2f} aastat")
         elif valik=="3":
-            n=int(input("Näita (1 - noorimad, 2 - vanimad): "))
-            sorted_employees=sorted(zip(töötajad,sünniajad),key=sort_by_age,reverse=(n==2))
+            n=int(input("Näita (1-noorimad, 2-vanimad): "))
+            sorted_employees=sorted(zip(töötajad,sünniajad),key=lambda x: 2025-x[1],reverse=(n==2))
             for i,(nimi,sünniaasta) in enumerate(sorted_employees[:10],1):
                 print(f"{i}. {nimi} - {2025-sünniaasta} aastat")
         elif valik=="4":
@@ -126,10 +125,12 @@ def tootajad():
             for nimi,sünniaasta in zip(töötajad,sünniajad):
                 if sünniaasta==aasta:
                     print(f"{nimi} - {aasta}")
+                else:
+                    print("On viga!")
         elif valik=="0":
             print("Nägemist!")
             break
-tootajad()
+töötajad()
 
 # #9
 
@@ -157,6 +158,7 @@ tootajad()
 #                 print(f"{nimi} keskmine hinne: {hinne:.2f}")
 #             else: print(f"{nimi} pole leitud.")
 #         elif valik=="0": 
-#         break
+#             print("Nägemist!")
+#             break
 
 # lapsed()
